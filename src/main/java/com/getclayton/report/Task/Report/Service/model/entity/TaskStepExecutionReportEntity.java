@@ -21,10 +21,9 @@ import java.time.Instant;
 public class TaskStepExecutionReportEntity
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    @NonNull
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "stepId")
+    private Long stepId;
 
     @Column(name = "taskExecutionId",unique=true)
     @NonNull
@@ -56,6 +55,6 @@ public class TaskStepExecutionReportEntity
     private String errorMessage;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "taskId",insertable=false, updatable=false)
+    @JoinColumn(name = "reportId")
     private TaskExecutionReportEntity taskExecutionReport;
 }

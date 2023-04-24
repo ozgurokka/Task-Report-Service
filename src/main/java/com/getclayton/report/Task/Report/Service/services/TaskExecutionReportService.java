@@ -1,6 +1,7 @@
 package com.getclayton.report.Task.Report.Service.services;
 
 import com.getclayton.report.Task.Report.Service.model.dto.TaskExecutionReportDTO;
+import com.getclayton.report.Task.Report.Service.model.dto.TaskExecutionReportResponseDTO;
 import com.getclayton.report.Task.Report.Service.model.entity.TaskExecutionReportEntity;
 
 /**
@@ -8,4 +9,6 @@ import com.getclayton.report.Task.Report.Service.model.entity.TaskExecutionRepor
  */
 public interface TaskExecutionReportService {
     public TaskExecutionReportEntity saveTaskExecutionReport(TaskExecutionReportDTO dto);
+
+    public TaskExecutionReportResponseDTO getReport(Long id);
 }

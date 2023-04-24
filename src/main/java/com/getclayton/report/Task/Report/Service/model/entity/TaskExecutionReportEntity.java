@@ -20,9 +20,9 @@ import java.util.List;
 @Setter
 public class TaskExecutionReportEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "reportId")
+    private Long reportId;
 
     @Column(name = "taskId", unique=true)
     @NonNull
@@ -44,6 +44,6 @@ public class TaskExecutionReportEntity {
     @NonNull
     private String errorMessage;
 
-    @OneToMany(mappedBy = "taskExecutionReport",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "taskExecutionReport",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<TaskStepExecutionReportEntity> taskStepExecutionReportList;
 }

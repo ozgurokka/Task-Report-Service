@@ -11,7 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class Mapper {
     public TaskExecutionReportEntity toTaskExecutionReportEntity(TaskExecutionReportDTO dto) {
-        return new TaskExecutionReportEntity();
+        return new TaskExecutionReportEntity().builder()
+                .taskId(dto.getTaskId())
+                .startDateTime(dto.getStartDateTime())
+                .endDateTime(dto.getEndDateTime())
+                .executionTimeSeconds(dto.getExecutionTimeSeconds())
+                .errorMessage(dto.getErrorMessage())
+                .build();
 
     }
 }

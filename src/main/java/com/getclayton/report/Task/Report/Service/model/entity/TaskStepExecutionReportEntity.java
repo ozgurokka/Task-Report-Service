@@ -4,10 +4,7 @@ import com.getclayton.report.Task.Report.Service.util.Enumaration;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.time.Instant;
-import java.util.List;
-import java.util.Set;
 
 /*
  * @author okka
@@ -21,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-public class TaskStepExecutionReport
+public class TaskStepExecutionReportEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,7 +44,7 @@ public class TaskStepExecutionReport
 
     @Column(name = "executionTimeSeconds")
     @NonNull
-    private Duration executionTimeSeconds;
+    private int executionTimeSeconds;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
@@ -59,6 +56,6 @@ public class TaskStepExecutionReport
     private String errorMessage;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id",insertable=false, updatable=false)
+    @JoinColumn(name = "taskId",insertable=false, updatable=false)
     private TaskExecutionReportEntity taskExecutionReport;
 }

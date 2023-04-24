@@ -30,7 +30,7 @@ public class TaskStepExecutionReportDTO {
     private Instant endDateTime;
 
     @NotBlank(message = "Task ID can not be empty !")
-    private Duration executionTimeSeconds;
+    private int executionTimeSeconds;
 
     @NotBlank(message = "Task ID can not be empty !")
     private String errorMessage;

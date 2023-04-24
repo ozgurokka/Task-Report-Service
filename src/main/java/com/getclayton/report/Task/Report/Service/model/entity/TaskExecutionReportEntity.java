@@ -3,7 +3,6 @@ package com.getclayton.report.Task.Report.Service.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 
@@ -23,7 +22,6 @@ public class TaskExecutionReportEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    @NonNull
     private Long id;
 
     @Column(name = "taskId", unique=true)
@@ -40,12 +38,12 @@ public class TaskExecutionReportEntity {
 
     @Column(name = "executionTimeSeconds")
     @NonNull
-    private Duration executionTimeSeconds;
+    private int executionTimeSeconds;
 
     @Column(name = "errorMessage")
     @NonNull
     private String errorMessage;
 
     @OneToMany(mappedBy = "taskExecutionReport",cascade = CascadeType.ALL)
-    private List<TaskStepExecutionReport> taskStepExecutionReportList;
+    private List<TaskStepExecutionReportEntity> taskStepExecutionReportList;
 }

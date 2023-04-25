@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 /*
  * @author okka
@@ -32,4 +33,5 @@ public class TaskExecutionReportDTO {
 
     @NotBlank(message = "Task ID can not be empty !")
     private String errorMessage;
+    
 }

@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Objects;
 
 /*
  * @author okka
@@ -21,11 +22,11 @@ import java.time.Instant;
 public class TaskStepExecutionReportEntity
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "stepId")
     private Long stepId;
 
-    @Column(name = "taskExecutionId",unique=true)
+    @Column(name = "taskExecutionId")
     @NonNull
     private Long taskExecutionId;
 
@@ -54,7 +55,7 @@ public class TaskStepExecutionReportEntity
     @NonNull
     private String errorMessage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "reportId")
     private TaskExecutionReportEntity taskExecutionReport;
 }

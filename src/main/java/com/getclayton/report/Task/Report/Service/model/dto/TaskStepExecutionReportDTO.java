@@ -17,8 +17,6 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskStepExecutionReportDTO {
-    @NotBlank(message = "Task ID can not be empty !")
-    private Long taskExecutionId;
 
     @NotBlank(message = "Task ID can not be empty !")
     private String stepName;

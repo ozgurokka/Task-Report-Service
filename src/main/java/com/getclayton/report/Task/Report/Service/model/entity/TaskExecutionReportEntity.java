@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 /*
  * @author okka
@@ -20,7 +21,7 @@ import java.util.List;
 @Setter
 public class TaskExecutionReportEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "reportId")
     private Long reportId;
 
@@ -44,6 +45,4 @@ public class TaskExecutionReportEntity {
     @NonNull
     private String errorMessage;
 
-    @OneToMany(mappedBy = "taskExecutionReport",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<TaskStepExecutionReportEntity> taskStepExecutionReportList;
 }

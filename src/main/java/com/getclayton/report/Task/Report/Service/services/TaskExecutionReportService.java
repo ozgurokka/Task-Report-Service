@@ -10,5 +10,5 @@ import com.getclayton.report.Task.Report.Service.model.entity.TaskExecutionRepor
 public interface TaskExecutionReportService {
     public TaskExecutionReportEntity saveTaskExecutionReport(TaskExecutionReportDTO dto);
 
-    public TaskExecutionReportResponseDTO getReport(Long id);
+    public TaskExecutionReportDTO getReport(Long id);
 }

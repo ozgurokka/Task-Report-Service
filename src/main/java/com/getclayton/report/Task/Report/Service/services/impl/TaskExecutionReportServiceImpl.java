@@ -9,6 +9,8 @@ import com.getclayton.report.Task.Report.Service.model.entity.TaskStepExecutionR
 import com.getclayton.report.Task.Report.Service.repositories.TaskExecutionReportRepository;
 import com.getclayton.report.Task.Report.Service.services.TaskExecutionReportService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,23 +30,20 @@ public class TaskExecutionReportServiceImpl implements TaskExecutionReportServic
 
     @Override
     public TaskExecutionReportEntity saveTaskExecutionReport(TaskExecutionReportDTO dto) {
+       /* TypeMap<TaskExecutionReportDTO,TaskExecutionReportEntity> propertyMapper = modelMapper.createTypeMap(TaskExecutionReportDTO.class, TaskExecutionReportEntity.class);
+        propertyMapper.addMapping(TaskExecutionReportDTO::getTaskId, TaskExecutionReportEntity::setTaskId);*/
+
         TaskExecutionReportEntity entity = modelMapper.map(dto,TaskExecutionReportEntity.class);
         return repository.save(entity);
     }
 
     @Override
-    public TaskExecutionReportResponseDTO getReport(Long id) {
+    public TaskExecutionReportDTO getReport(Long id) {
         Optional<TaskExecutionReportEntity> entity = repository.findById(id);
         if(!entity.isPresent()){
             throw new TaskReportNotFoundException(id+"");
         }
-        return convertToDto(entity.get());
+        return modelMapper.map(entity.get(),TaskExecutionReportDTO.class);
     }
 
-    public TaskExecutionReportResponseDTO convertToDto(TaskExecutionReportEntity entity) {
-        TaskExecutionReportResponseDTO responseDto = modelMapper.map(entity, TaskExecutionReportResponseDTO.class);
-        List<TaskStepExecutionReportDTO> stepDtos = entity.getTaskStepExecutionReportList().stream().map(step -> modelMapper.map(step, TaskStepExecutionReportDTO.class)).collect(Collectors.toList());
-        responseDto.setTaskStepExecutionReportDTOList(stepDtos);
-        return responseDto;
-    }
 }

@@ -27,6 +27,4 @@ public class TaskExecutionReportResponseDTO {
 
     @NotBlank(message = "Task ID can not be empty !")
     private String errorMessage;
-
-    private List<TaskStepExecutionReportDTO> taskStepExecutionReportDTOList;
 }

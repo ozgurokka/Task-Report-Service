@@ -29,8 +29,7 @@ public class TaskExecutionReportController {
         return ResponseEntity.ok(service.saveTaskExecutionReport(taskExecutionReportDTO));
     }
     @GetMapping(path = "/v1/api/taskexecutionreport/{id}")
-    public ResponseEntity<TaskExecutionReportResponseDTO> getTaskExecutionReport(@PathVariable(name = "id", required = true) Long id) throws TaskReportNotFoundException {
-
+    public ResponseEntity<TaskExecutionReportDTO> getTaskExecutionReport(@PathVariable(name = "id", required = true) Long id) throws TaskReportNotFoundException {
         return ResponseEntity.ok(service.getReport(id));
     }
 
